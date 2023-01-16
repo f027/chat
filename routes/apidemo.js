@@ -79,10 +79,14 @@ router.post('/wukong1',   (req, res) => {
         presence_penalty: 0,
         stop: ["You:"],
     }).then((response) => {
-      console.log('response:', response.data.choices[0].text);
-      let msg = response.data.choices[0].text;
-      // res.send('response: 查询结果', response.data.choices[0].text)
-      res.send( msg)
+        try {
+            console.log(response.data.choices[0].text);
+            res.send(response.data.choices[0].text);
+        }
+        catch (e) {
+
+            res.send('error')
+        }
   }).catch((error) => {
       console.log(error);
       res.send('error:', error)
