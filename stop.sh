@@ -1,17 +1,11 @@
 #!/bin/bash
 
-# Find and kill the process listening on port 3002
+# Find the process ID for port 3002
+port=3002
+#根据端口号查询对应的pid
+pid=$(netstat -nlp | grep :$port | awk '{print $7}' | awk -F"/" '{ print $1 }');
 
-# Get the process ID of the process listening on port 3002
-PID=`lsof -i :3002 | awk 'NR>1 {print $2}'`
-
-# Kill the process
-if [ -z "$PID" ]; then
-echo "No process listening on port 3002"
-else
-echo "Killing process $PID"
-kill -9 $PID
+#杀掉对应的进程，如果pid不存在，则不执行
+if [  -n  "$pid"  ];  then
+    kill  -9  $pid;
 fi
-
-
-
