@@ -6,7 +6,7 @@ const { Configuration, OpenAIApi } = require("openai");
 
 const configuration = new Configuration({
     organization: "org-nzotoj7uNoUKh3tDk16xGrpd",
-    apiKey: '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',
+    apiKey: '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',
 });
 const openai = new OpenAIApi(configuration);
 
@@ -62,11 +62,11 @@ router.get('/', async function (req, res, next) {
 
 
 //使用POST API
-router.get('/wukong1',   (req, res) => {
+router.post('/wukong1',   (req, res) => {
 
     try {
-        // const data = req.body.message
-        const data = req.query.message
+        const data = req.body.message
+        // const data = req.query.message
         console.log('收到数据', data);
         // res.send('Data received:' + data)
 
