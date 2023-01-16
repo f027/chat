@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <%- include  ../partials/header.ejs  %>
+</head>
+
+<body>
+
+  <%- include  ../partials/nav.ejs  %>
+
+
+<div class="container">
+  <div class="alert alert-info text-center" role="alert">
+    <h1>My Profile</h1>
+  </div>
+  <hr>
+  <div class="row">
+    <div class="col-md-12">
+      <h3><span class="glyphicon glyphicon-info-sign"></span> demo </h3>
+
+      <form action="wukong1" method="POST" >
+<!--        <div class="form-outline mb-4">-->
+<!--          <label class="form-label" for="name">Name</label>-->
+<!--          <input name="name" type="text" id="name" class="form-control"  placeholder="your name" required/>-->
+<!--        </div>-->
+<!--        <div class="form-outline mb-4">-->
+<!--          <label class="form-label" for="email">Email address</label>-->
+<!--          <input name="email" type="email" id="email" class="form-control" placeholder="example@email.com" required/>-->
+<!--        </div>-->
+        <div class="form-outline mb-4">
+          <label class="form-label" for="message">Message</label>
+          <textarea
+                  name="message" class="form-control" id="message" rows="10"
+                    placeholder="Hello! Hola! 你好呀！" required></textarea>
+            <button class="btn btn-secondary btn-light" type="submit" value="send"
+            ><strong>Send</strong></button>
+
+        </div>
+        <div class="row">
+
+        </div>
+      </form>
+
+
+
+
+
+    </div>
+  </div> <!-- row -->
+    <%- include  ../partials/footer.ejs    %>
+
+</div>
+
+
+</body>
+</html>
