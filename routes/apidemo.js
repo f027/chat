@@ -67,7 +67,7 @@ router.get('/wukong1',   (req, res) => {
     try {
         // const data = req.body.message
         const data = req.query.message
-        console.log('data', data);
+        console.log('收到数据', data);
         // res.send('Data received:' + data)
 
         openai.createCompletion({
@@ -80,6 +80,7 @@ router.get('/wukong1',   (req, res) => {
             presence_penalty: 0,
             stop: ["You:"],
         }).then((response) => {
+            console.log('response----',response );
             try {
                 var msg = response.data.choices[0].text;
                 console.log(msg);
@@ -90,7 +91,7 @@ router.get('/wukong1',   (req, res) => {
             }
         }).catch((error) => {
             console.log(error);
-            res.send('error:', error)
+            res.send('error:'+ error)
         });
     } catch (e) {
         res.send('error')
