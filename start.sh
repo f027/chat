@@ -1,1 +1,1 @@
-nohup node ./bin/www >output 2>&1 &
+nohup node ./bin/www >chat.log 2>&1 &
