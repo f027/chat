@@ -10,6 +10,6 @@ if [  -n  "$pid"  ];  then
     kill  -9  $pid;
 fi
 
-echo "start server"
-nohup node ./bin/www >chat.log 2>&1 &
+echo "start server :  node ./bin/www "
+nohup node ./bin/www >>chat.log 2>&1 &
 echo "start server success , logfile is chat.log"
