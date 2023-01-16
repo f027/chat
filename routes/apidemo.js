@@ -62,36 +62,39 @@ router.get('/', async function (req, res, next) {
 
 
 //使用POST API
-router.post('/wukong1',   (req, res) => {
+router.get('/wukong1',   (req, res) => {
 
-    // const data = req.body.message
-    const data = req.query.message
-    console.log('data', data);
-    // res.send('Data received:' + data)
+    try {
+        // const data = req.body.message
+        const data = req.query.message
+        console.log('data', data);
+        // res.send('Data received:' + data)
 
-  openai.createCompletion({
-        model: "text-davinci-003",
-        prompt:   data,
-        temperature: 0.5,
-        max_tokens: 4000,
-        top_p: 1,
-        frequency_penalty: 0.5,
-        presence_penalty: 0,
-        stop: ["You:"],
-    }).then((response) => {
-        try {
-            var msg = response.data.choices[0].text;
-            console.log(msg);
-            res.send(msg);
-        }
-        catch (e) {
+        openai.createCompletion({
+            model: "text-davinci-003",
+            prompt: data,
+            temperature: 0.5,
+            max_tokens: 4000,
+            top_p: 1,
+            frequency_penalty: 0.5,
+            presence_penalty: 0,
+            stop: ["You:"],
+        }).then((response) => {
+            try {
+                var msg = response.data.choices[0].text;
+                console.log(msg);
+                res.send(msg);
+            } catch (e) {
 
-            res.send('error')
-        }
-  }).catch((error) => {
-      console.log(error);
-      res.send('error:', error)
-  } );
+                res.send('error')
+            }
+        }).catch((error) => {
+            console.log(error);
+            res.send('error:', error)
+        });
+    } catch (e) {
+        res.send('error')
+    }
 
 })
 
