@@ -64,8 +64,8 @@ router.get('/', async function (req, res, next) {
 //使用POST API
 router.post('/wukong1',   (req, res) => {
 
-    const data = req.body.message
-    // const data = req.query.message
+    // const data = req.body.message
+    const data = req.query.message
     console.log('data', data);
     // res.send('Data received:' + data)
 
@@ -80,8 +80,9 @@ router.post('/wukong1',   (req, res) => {
         stop: ["You:"],
     }).then((response) => {
         try {
-            console.log(response.data.choices[0].text);
-            res.send(response.data.choices[0].text);
+            var msg = response.data.choices[0].text;
+            console.log(msg);
+            res.send(msg);
         }
         catch (e) {
 
